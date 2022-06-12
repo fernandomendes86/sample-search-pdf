@@ -1,6 +1,9 @@
 require 'pdf/reader'
+require_relative './lib/pdf_file'
 
-Dir['./pdfs/*.pdf'].each do |filename|
+files = PDFFile.all_files
+
+files.each do |filename|
   reader = PDF::Reader.new(filename)
   reader.pages.each do |page|
     text_page = page.text
